@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Equation Root</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(22, 22, 22);
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1,
+        input,
+        button,
+        h3 {
+            margin: 10px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 0;
+            outline: none;
+        }
+
+        h1,
+        h3 {
+            color: white;
+        }
+
+        button {
+            width: 100px;
+            color: white;
+            background: orange;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Quadratic Equation Root</h1>
+
+        <input type="number" id="number1" placeholder="Enter first number">
+        <input type="number" id="number2" placeholder="Enter second number">
+        <input type="number" id="number3" placeholder="Enter third number">
+
+        <div class="button-container">
+            <button id="btn" onclick="quadraticEquation()">Calculate</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        function quadraticEquation() {
+            let root1, roo2;
+
+            let a = document.getElementById('number1').value;
+            let b = document.getElementById('number2').value;
+            let c = document.getElementById('number3').value;
+
+            let discriminant = b * b - 4 * a * c;
+
+            if (discriminant > 0) {
+                root1 = (-b + Math.sqrt(discriminant) / (2 * a));
+                root2 = (-b - Math.sqrt(discriminant) / (2 * a));
+
+                document.getElementById('result').innerHTML = 'The roots of quadratic equation are ' + root1 + ' and ' + root2;
+            } else if (discriminant == 0) {
+                root1 = root2 = -b / (2 * a);
+
+                document.getElementById('result').innerHTML = 'The roots of quadratic equation are ' + root1 + ' and ' + root2;
+            } else {
+                let realPart = (-b/(2*a)).toFixed(2);
+                let imagPart = (Math.sqrt(-discriminant)/(2*a)).toFixed(2);
+
+                document.getElementById('result').innerHTML = 'The roots of quadratic equation are ' + realPart + root2 + ' i and ' + realPart - imagPart + ' i';
+            }
+        }
+        function reset(){
+            document.getElementById('number1').value = '';
+            document.getElementById('number2').value = '';
+            document.getElementById('number3').value = '';
+            document.getElementById('result').innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Largest Amoung Four</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(22, 22, 22);
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1,
+        input,
+        button,
+        h3 {
+            margin: 10px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 0;
+            outline: none;
+        }
+
+        h1,
+        h3 {
+            color: white;
+        }
+
+        button {
+            width: 100px;
+            color: white;
+            background: orange;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Largest Amoung the Four Checker</h1>
+
+        <input type="number" id="number1" placeholder="Enter a number">
+        <input type="number" id="number2" placeholder="Enter a number">
+        <input type="number" id="number3" placeholder="Enter a number">
+        <input type="number" id="number4" placeholder="Enter a number">
+
+        <div class="button-container">
+            <button id="btn" onclick="largeChecker()">Check</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        function largeChecker() {
+            let num1 = document.getElementById('number1').value;
+            let num2 = document.getElementById('number2').value;
+            let num3 = document.getElementById('number3').value;
+            let num4 = document.getElementById('number4').value;
+
+            if (num1 >= num2 && num1 >= num3 && num1 >= num4) {
+                document.getElementById('result').innerHTML = num1 + " is the largest."
+            } else if (num2 >= num1 && num2 >= num3 && num2 >= num4) {
+                document.getElementById('result').innerHTML = num2 + " is the largest."
+            } else if (num3 >= num1 && num3 >= num2 && num3 >= num4) {
+                document.getElementById('result').innerHTML = num3 + " is the largest."
+            } else if (num4 >= num2 && num4 >= num3 && num4 >= num1) {
+                document.getElementById('result').innerHTML = num4 + " is the largest."
+            } else {
+                document.getElementById('result').innerHTML = 'Please enter valid values'
+            }
+        }
+        function reset() {
+            document.getElementById('number1').value = '';
+            document.getElementById('number2').value = '';
+            document.getElementById('number3').value = '';
+            document.getElementById('number4').value = '';
+            document.getElementById('result').innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(22, 22, 22);
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1,
+        input,
+        button,
+        h3 {
+            margin: 10px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 0;
+            outline: none;
+        }
+
+        h1,
+        h3 {
+            color: white;
+        }
+
+        button {
+            width: 100px;
+            color: white;
+            background: orange;
+            font-weight: 600;
+        }
+        select{
+            width: 195px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+
+        <input type="number" id="temp" placeholder="Enter temperature">
+        <select name="temp" id="convert">
+            <option value="select">Choose conversion type</option>
+            <option value="celsiusToFahrenhite">Celsius to Fahrenhite</option>
+            <option value="fahrenhiteToCelsius">Fahrenhite to Celsius</option>
+        </select>
+       
+
+        <div class="button-container">
+            <button id="btn" onclick="tempConvert()">Convert</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+          function tempConvert(){
+            let temp = parseFloat(document.getElementById('temp').value);
+            let type = document.getElementById('convert').value;
+            
+            let result;
+            if(type === 'celsiusToFahrenhite'){
+                result = (temp*9/5)+32;
+                document.getElementById('result').innerHTML = temp + " into is " + result + ' F';
+            }else{
+                result = (temp-32)*5/9;
+                document.getElementById('result').innerHTML = temp + " into is " + result + ' C';
+            }
+          }
+          function reset(){
+            document.getElementById('temp').value = '';
+            document.getElementById('result').innerHTML = '';
+          }
+    </script>
+</body>
+</html>

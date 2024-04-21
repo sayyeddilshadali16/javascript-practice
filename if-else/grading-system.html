@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grading System</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(22, 22, 22);
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1,
+        input,
+        button,
+        h3 {
+            margin: 10px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 0;
+            outline: none;
+        }
+
+        h1,
+        h3 {
+            color: white;
+        }
+
+        button {
+            width: 100px;
+            color: white;
+            background: orange;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Grade Calculator</h1>
+        <div class="input-container">
+            <input id="number" placeholder="Enter your percentage">
+        </div>
+        <div class="button-container">
+            <button id="btn" onclick="grade()">Get grade</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        function grade() {
+            let mark = document.getElementById('number').value;
+
+            if (mark >= 82) {
+                document.getElementById('result').innerHTML = 'You got A+ Grade'
+            } else if (mark >= 72) {
+                document, getElementById('result').innerHTML = 'You got B+ Grade'
+            } else if (mark >= 62) {
+                document.getElementById('result').innerHTML = 'You got C Grade'
+            } else if (mark >= 52) {
+                document.getElementById('result').innerHTML = 'You got D Grade'
+            } else if (mark >= 42) {
+                document.getElementById('result').innerHTML = 'You got E Grade'
+            } else {
+                document.getElementById('result').innerHTML = 'You got F You FAILED'
+            }
+
+        }
+        function reset() {
+            document.getElementById('number').value = '';
+            document.getElementById('result').innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>

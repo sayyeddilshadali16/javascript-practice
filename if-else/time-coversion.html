@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time conversion</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(22, 22, 22);
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1,
+        input,
+        button,
+        h3 {
+            margin: 10px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 0;
+            outline: none;
+        }
+
+        h1,
+        h3 {
+            color: white;
+        }
+
+        button {
+            width: 100px;
+            color: white;
+            background: orange;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Time Conversion</h1>
+
+        <input type="number" id="number" placeholder="Enter time in seconds">
+
+        <div class="button-container">
+            <button id="btn" onclick="convertTime()">Convert</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        function convertTime() {
+            let inputSecond = document.getElementById('number').value;
+
+            if (!isNaN(inputSecond) && inputSecond >= 0) {
+                const hours = Math.floor(inputSecond / 3600);
+                const mins = Math.floor((inputSecond % 3600) / 60);
+                const seconds = Math.floor(((inputSecond % 3600) / 60) / 60);
+
+                document.getElementById('result').innerHTML = hours + ':' + mins + ':' + seconds
+            } else {
+                document.getElementById('result').innerHTML = 'Please enter valid time'
+            }
+        }
+        function reset() {
+            document.getElementById('number').value = "";
+            document.getElementById('result').innerHTML = "";
+        }
+    </script>
+</body>
+
+</html>

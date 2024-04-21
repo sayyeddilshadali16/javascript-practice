@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leap Year</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(22, 22, 22);
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1,
+        input,
+        button,
+        h3 {
+            margin: 10px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 0;
+            outline: none;
+        }
+
+        h1,
+        h3 {
+            color: white;
+        }
+
+        button {
+            width: 100px;
+            color: white;
+            background: orange;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Maximum of three numbers</h1>
+        <div class="input-container">
+            <input id="number" placeholder="Enter a year">
+        </div>
+        <div class="button-container">
+            <button id="btn" onclick="leapYear()">Answer</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+
+        function leapYear() {
+            let year = parseInt(document.getElementById('number').value);
+
+            if (!isNaN(year)) {
+                if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+                    document.getElementsById('result').innerHTML = year + ' is a leap year'
+                } else {
+                    document.getElementById('result').innerHTML = year + ' is not a leap year'
+                }
+            } else {
+                document.getElementById('result').innerHTML = 'Please enter a valid year.'
+            }
+        }
+
+        function reset() {
+            document.getElementById('number').value = '';
+            document.getElementById('result').innerHTML = '';
+        }
+    </script>
+
+</body>
+
+</html>

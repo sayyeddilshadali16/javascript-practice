@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postive, Negative or Zero</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(22, 22, 22);
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1,
+        input,
+        button,
+        h3 {
+            margin: 10px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 0;
+            outline: none;
+        }
+
+        h1,
+        h3 {
+            color: white;
+        }
+
+        button {
+            color: white;
+            background: orange;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Check the number is Postive or Negative</h1>
+        <input id="number" placeholder="Enter a number">
+        <div class="button-container">
+            <button onclick="checkNumber()">Check</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+        <h3 id="result"></h3>
+    </div>
+    <script>
+        function checkNumber() {
+            var number = document.getElementById('number').value;
+            if (number > 0) {
+                document.getElementById('result').innerHTML = number + ' is a positive number.';
+            } else if (number < 0) {
+                document.getElementById('result').innerHTML = number + ' is a negative number.';
+            } else if (number == 0){
+                document.getElementById('result').innerHTML = number + ' is zero.';
+            } else {
+                document.getElementById('result').innerHTML = 'Please enter a valid number'
+            }
+        }
+        function reset() {
+            document.getElementById('number').value = '';
+            document.getElementById('result').innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>
